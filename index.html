@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#f7f7f4">
+    <title>Veeru Varma | Full-Stack .NET Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f7f4;
+            --ink: #111214;
+            --muted: #666a70;
+            --line: #e5e5e0;
+            --yellow: #f4c400;
+            --white: #fff;
+            --max: 1240px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 84px
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "DM Sans",sans-serif
+        }
+
+        .wrap {
+            width: min(var(--max),calc(100% - 56px));
+            margin: auto
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .nav {
+            height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .logo {
+            font: 800 21px Manrope;
+            letter-spacing: -1px
+        }
+
+            .logo i {
+                color: var(--yellow);
+                font-style: normal
+            }
+
+        .links {
+            display: flex;
+            gap: 30px;
+            font-size: 13px;
+            font-weight: 600
+        }
+
+            .links a:hover {
+                color: #a88300
+            }
+
+        .resume {
+            background: #111;
+            color: white;
+            padding: 12px 17px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700
+        }
+
+        .hero {
+            min-height: 480px;
+            padding: 22px 0 30px;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero-copy {
+            padding: 70px 0;
+            position: relative;
+            z-index: 2
+        }
+
+        .kicker {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #8d7000
+        }
+
+        .hero h1 {
+            font: 800 clamp(56px,7.8vw,98px)/.96 Manrope;
+            letter-spacing: -.075em;
+            margin: 17px 0 12px
+        }
+
+            .hero h1 span {
+                color: #d9ad00
+            }
+
+        .role {
+            font: 700 clamp(22px,3vw,32px) Manrope;
+            margin: 0 0 18px
+        }
+
+            .role u {
+                text-decoration-color: var(--yellow);
+                text-decoration-thickness: 4px;
+                text-underline-offset: 6px
+            }
+
+        .lead {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #555b63;
+            max-width: 570px
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin: 28px 0
+        }
+
+        .btn {
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 800;
+            border: 1px solid #111
+        }
+
+            .btn.dark {
+                background: #111;
+                color: white
+            }
+
+            .btn.light {
+                background: transparent
+            }
+
+        .social {
+            display: flex;
+            gap: 10px
+        }
+
+            .social a {
+                width: 36px;
+                height: 36px;
+                border: 1px solid var(--line);
+                border-radius: 50%;
+                display: grid;
+                place-items: center;
+                font-size: 12px;
+                font-weight: 800;
+                background: white
+            }
+
+        .hero-art {
+            height: 450px;
+            position: relative;
+            display: flex;
+            align-items: end;
+            justify-content: center
+        }
+
+        .sun {
+            position: absolute;
+            width: min(390px,85%);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: var(--yellow);
+            top: 45px;
+            right: 12%;
+        }
+
+        .hero-art img {
+            margin-left: 25px;
+            position: relative;
+            z-index: 1;
+            width: min(420px,100%);
+            height: 440px;
+            object-fit: contain;
+            object-position: center bottom;
+            filter: none contrast(1.04);
+            mix-blend-mode: normal
+        }
+
+        .float-skills {
+            position: absolute;
+            left: 0;
+            top: 120px;
+            z-index: 3;
+            display: grid;
+            gap: 10px
+        }
+
+            .float-skills span, .exp-badge {
+                background: #ffffffed;
+                border: 1px solid #e9e7e0;
+                box-shadow: 0 8px 25px #0000000c;
+                border-radius: 12px;
+                padding: 12px 15px;
+                font-size: 12px;
+                font-weight: 700
+            }
+
+        .exp-badge {
+            position: absolute;
+            right: 0;
+            bottom: 110px;
+            z-index: 3;
+            text-align: center;
+            padding: 18px 22px
+        }
+
+            .exp-badge strong {
+                display: block;
+                font: 800 32px Manrope
+            }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 26px 12px;
+            margin: 0 0 70px
+        }
+
+        .stat {
+            text-align: center;
+            border-right: 1px solid var(--line)
+        }
+
+            .stat:last-child {
+                border: 0
+            }
+
+            .stat strong {
+                font: 800 32px Manrope;
+                display: block
+            }
+
+            .stat span {
+                font-size: 12px;
+                color: var(--muted)
+            }
+
+        section {
+            padding: 65px 0
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 28px
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            color: #a17e00;
+            text-transform: uppercase
+        }
+
+        .section-head h2 {
+            font: 800 clamp(34px,5vw,54px)/1 Manrope;
+            letter-spacing: -.06em;
+            margin: 10px 0 0
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 28px;
+            align-items: center
+        }
+
+        .about-image {
+            height: 360px;
+            width: 360px;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #ffffff;
+            margin-left: 80px
+        }
+
+            .about-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center 25%;
+                filter: none
+            }
+
+        .about-copy {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #41454b
+        }
+
+            .about-copy strong {
+                color: #111
+            }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 10px
+        }
+
+        .skill {
+            padding: 16px;
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 14px
+        }
+
+        .project {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+            min-height: 245px;
+            transition: .25s
+        }
+
+            .project:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 14px 35px #0000000c
+            }
+
+        .p-top {
+            display: flex;
+            justify-content: space-between;
+            color: #8a8c8d;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .p-mark {
+            position: absolute;
+            right: 20px;
+            top: 34px;
+            font: 800 76px Manrope;
+            color: #f4f1e7;
+            letter-spacing: -.08em
+        }
+
+        .project h3 {
+            font: 800 23px Manrope;
+            letter-spacing: -.04em;
+            max-width: 80%;
+            margin: 38px 0 8px;
+            position: relative
+        }
+
+        .project p {
+            color: #62666c;
+            font-size: 13px;
+            line-height: 1.7;
+            max-width: 570px
+        }
+
+        .tags {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+            .tags span {
+                background: #fff9d9;
+                color: #665300;
+                padding: 6px 8px;
+                border-radius: 5px;
+                font-size: 10px;
+                font-weight: 800
+            }
+
+        .experience {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            gap: 25px;
+            padding: 25px 0;
+            border-top: 1px solid var(--line)
+        }
+
+        .date {
+            font-size: 11px;
+            font-weight: 800;
+            color: #967500;
+            letter-spacing: .08em
+        }
+
+        .experience h3 {
+            font: 800 21px Manrope;
+            margin: 0 0 5px
+        }
+
+        .experience b {
+            font-size: 14px
+        }
+
+        .experience small {
+            display: block;
+            color: #777;
+            margin-top: 4px
+        }
+
+        .experience p {
+            font-size: 13px;
+            color: #62666c;
+            line-height: 1.7;
+            margin: 9px 0 0
+        }
+
+        .contact {
+            background: #111;
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px
+        }
+
+            .contact h2 {
+                font: 800 clamp(32px,5vw,56px) Manrope;
+                letter-spacing: -.06em;
+                margin: 8px 0
+            }
+
+            .contact .eyebrow {
+                color: var(--yellow)
+            }
+
+            .contact a {
+                background: var(--yellow);
+                color: #111;
+                border-radius: 8px;
+                padding: 15px 20px;
+                font-weight: 800;
+                white-space: nowrap
+            }
+
+        .footer {
+            padding: 25px 0;
+            color: #777;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between
+        }
+
+        @media(max-width:850px) {
+            .hero {
+                min-height: 0;
+                padding: 36px 0 24px
+            }
+
+            .wrap {
+                width: calc(100% - 36px)
+            }
+
+            .links {
+                gap: 14px
+            }
+
+            .hero {
+                grid-template-columns: 1fr
+            }
+
+            .hero-copy {
+                padding: 60px 0 10px
+            }
+
+            .hero-art {
+                height: 440px
+            }
+
+                .hero-art img {
+                    height: 420px
+                }
+
+            .float-skills {
+                left: 4%;
+                top: 65px
+            }
+
+            .stats {
+                margin-top: 15px
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr
+            }
+
+            .skills {
+                grid-template-columns: repeat(3,1fr)
+            }
+        }
+
+        @media(max-width:580px) {
+            .nav {
+                height: auto;
+                min-height: 68px;
+                flex-wrap: wrap;
+                padding: 12px 0;
+                gap: 12px
+            }
+
+            .links {
+                order: 3;
+                width: 100%;
+                justify-content: space-between;
+                font-size: 11px
+            }
+
+            .resume {
+                font-size: 10px
+            }
+
+            .hero h1 {
+                font-size: 58px
+            }
+
+            .hero-art {
+                height: 350px
+            }
+
+                .hero-art img {
+                    height: 340px
+                }
+
+            .sun {
+                width: 270px;
+                top: 28px
+            }
+
+            .float-skills {
+                top: 30px
+            }
+
+                .float-skills span {
+                    padding: 8px;
+                    font-size: 10px
+                }
+
+            .exp-badge {
+                bottom: 45px;
+                padding: 12px
+            }
+
+            .stats {
+                grid-template-columns: repeat(2,1fr);
+                gap: 20px
+            }
+
+            .stat:nth-child(2) {
+                border: 0
+            }
+
+            .stat strong {
+                font-size: 26px
+            }
+
+            .projects {
+                grid-template-columns: 1fr
+            }
+
+            .skills {
+                grid-template-columns: repeat(2,1fr)
+            }
+
+            .experience {
+                grid-template-columns: 1fr;
+                gap: 9px
+            }
+
+            .contact {
+                padding: 26px;
+                display: block
+            }
+
+                .contact a {
+                    display: inline-block;
+                    margin-top: 12px
+                }
+
+            .footer {
+                display: block;
+                line-height: 2
+            }
+        }
+    </style>
+</head>
+<body>
+    <header><div class="wrap nav"><a class="logo" href="#">Er<span style="color:#f4c400">.</span> Veeru Varma</a><nav class="links"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+            <a href="gallery.html">Gallery</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav><a class="resume" href="Veeru_Varma_Resume.pdf" download>Download Resume ↓</a></div></header>
+    <main id="home">
+        <div class="wrap">
+            <section class="hero"><div class="hero-copy"><div class="kicker">Hello, I’m</div><h1>Veeru <span>Varma</span></h1><p class="role">Full Stack .NET Developer</p><p class="lead">I build scalable, secure and high-performance web applications using .NET Core, Web API, SQL Server and Angular.</p><div class="actions"><a class="btn dark" href="#projects">View Projects →</a><a class="btn light" href="#contact">Contact Me ↗</a></div><div class="social"><a href="https://www.linkedin.com/in/veeru-varma/" target="_blank">in</a><a href="mailto:veerutasu89@gmail.com">@</a><a href="tel:+919315570548">☎</a><a href="https://www.instagram.com/the_veeru_verma/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a></div></div><div class="hero-art"><div class="sun"></div><div class="float-skills"><span>.NET Core / .NET 8</span><span>Angular</span><span>SQL Server</span><span>C#</span></div><img src="veeru-profile-edited.jpg" alt="Veeru Varma portrait"><div class="exp-badge"><strong>4.5+</strong>Years of Experience</div></div></section>
+            <div class="stats"><div class="stat"><strong>4.5+</strong><span>Years Experience</span></div><div class="stat"><strong>8</strong><span>Projects</span></div><div class="stat"><strong>3</strong><span>Organizations</span></div><div class="stat"><strong>.NET</strong><span>Core Focus</span></div></div>
+        </div>
+        <section id="about"><div class="wrap"><div class="section-head"><div><div class="eyebrow">01 / About me</div><h2>Engineering with purpose.</h2></div></div><div class="about-grid"><div class="about-image"><img src="ModernOffice.png" alt="Veeru Varma"></div><p class="about-copy">I’m a <strong>Full-Stack .NET Developer</strong> with 4.5+ years of professional experience building enterprise-level web applications across multiple domains, including financial systems, payment integrations, vehicle management, parking automation, access management, HRMS and legal technology. I specialize in <strong>C#, ASP.NET Core, .NET Web API, SQL Server, Angular and AngularJS</strong>, with hands-on experience in RESTful API development, database design, authentication, third-party integrations and performance optimization. I enjoy solving complex business challenges and building secure, scalable and maintainable applications with a focus on clean code and reliable user experiences.</p></div></div></section>
+        <section id="skills"><div class="wrap"><div class="section-head"><div><div class="eyebrow">02 / Technical skills</div><h2>My technology stack.</h2></div></div><div class="skills"><div class="skill">C#</div><div class="skill">ASP.NET MVC</div><div class="skill">.NET Core Web API</div><div class="skill">Angular</div><div class="skill">AngularJS</div><div class="skill">SQL Server</div><div class="skill">MySQL</div><div class="skill">Oracle RDBMS</div><div class="skill">Entity Framework</div><div class="skill">ADO.NET</div><div class="skill">LINQ</div><div class="skill">JWT / RBAC</div><div class="skill">AES / TLS</div><div class="skill">xUnit</div><div class="skill">YOLOv8 / OpenCV</div><div class="skill">Tesseract OCR</div><div class="skill">Git / Jira</div></div></div></section>
+        <section id="projects"><div class="wrap"><div class="section-head"><div><div class="eyebrow">03 / Featured work</div><h2>Selected projects.</h2></div><span style="font-size:12px;color:#777">8 projects</span></div><div class="projects"><article class="project"><div class="p-top"><span>01 / PAYTM</span><span>PROJECT</span></div><div class="p-mark">01</div><h3>Nayara Energy — Vehicle Management &amp; User Management</h3><p>Combined vehicle and user management work for Nayara Energy’s fuel outlet network.</p><div class="tags"><span>ASP.NET Core Web API</span><span>ASP.NET MVC</span><span>SQL Server</span><span>JWT / RBAC</span></div></article><article class="project"><div class="p-top"><span>02 / BLACKBULL</span><span>PROJECT</span></div><div class="p-mark">02</div><h3>IXXALL — HRMS</h3><p>HRMS covering employee records, attendance, leave, payroll and user management, with background file monitoring and automated notifications.</p><div class="tags"><span>.NET 8 Web API</span><span>xUnit</span></div></article><article class="project"><div class="p-top"><span>03 / BLACKBULL</span><span>PROJECT</span></div><div class="p-mark">03</div><h3>DocDaddy — Legal Services Platform</h3><p>Lawyer discovery and category-wise search, appointment booking, digital e-sign workflows and payment gateway integration.</p><div class="tags"><span>.NET Web API 4.5</span><span>AngularJS</span><span>Payments</span></div></article><article class="project"><div class="p-top"><span>04 / BLACKBULL</span><span>PROJECT</span></div><div class="p-mark">04</div><h3>IFS — Integrated Finance System</h3><p>Payroll engine plus Business, Home and Gold loan modules, document upload and multi-stage approval workflows.</p><div class="tags"><span>.NET</span><span>SQL Server</span><span>Workflows</span></div></article><article class="project"><div class="p-top"><span>05 / NEPTUNE</span><span>PROJECT</span></div><div class="p-mark">05</div><h3>Access Management System — PWA</h3><p>Progressive Web App for managing access permissions, users and entry operations through a responsive interface.</p><div class="tags"><span>PWA</span><span>.NET Core Web API</span><span>Access Control</span></div></article><article class="project"><div class="p-top"><span>06 / NEPTUNE</span><span>PROJECT</span></div><div class="p-mark">06</div><h3>ANPR Parking System — Vehicle Detection &amp; Number Plate Recognition</h3><p>Real-time vehicle detection using YOLOv8 and OpenCV, with number-plate extraction using Tesseract OCR and .NET API integration.</p><div class="tags"><span>Python</span><span>YOLOv8</span><span>OpenCV</span><span>Tesseract OCR</span></div></article><article class="project"><div class="p-top"><span>07 / NEPTUNE</span><span>PROJECT</span></div><div class="p-mark">07</div><h3>FASTag Parking System — Contactless Payment Integration</h3><p>Contactless FASTag payment API integration with an Angular operator interface.</p><div class="tags"><span>FASTag API</span><span>Angular</span><span>Payment Integration</span></div></article><article class="project"><div class="p-top"><span>08 / NEPTUNE</span><span>PROJECT</span></div><div class="p-mark">08</div><h3>EMS — Electronic Management System</h3><p>Electronic Management System with document upload, workflow automation and third-party e-signature integration.</p><div class="tags"><span>Document Workflow</span><span>Automation</span><span>E-signature</span></div></article></div></div></section>
+        <section id="experience"><div class="wrap"><div class="section-head"><div><div class="eyebrow">04 / Career</div><h2>Work experience.</h2></div></div><article class="experience"><div class="date">FEB 2026 — SEP 2026</div><div><h3>Full-Stack .NET Developer</h3><b>Paytm · Nayara Energy Project</b><small>Contract role; payroll administered by SingleFocus Service LLP</small><p>Vehicle management, user management, secure APIs and SQL Server performance for transactional workloads.</p></div></article><article class="experience"><div class="date">FEB 2025 — DEC 2025</div><div><h3>Full-Stack .NET Developer</h3><b>Blackbull Technosoft Pvt. Ltd.</b><p>IXXALL HRMS, DocDaddy legal services platform and IFS Integrated Finance System.</p></div></article><article class="experience"><div class="date">MAR 2022 — JAN 2025</div><div><h3>Full-Stack .NET Developer</h3><b>Neptune India Limited</b><p>Access management PWA, ANPR parking and FASTag parking + EMS.</p></div></article></div></section>
+        <section id="contact"><div class="wrap"><div class="contact"><div><div class="eyebrow">Have an opportunity?</div><h2>Let’s build something great.</h2><div style="color:#d3d3d3;font-size:14px">veerutasu89@gmail.com · +91 93155 70548 · Noida, India</div></div><a href="mailto:veerutasu89@gmail.com">Get in touch →</a></div></div></section>
+    </main><footer class="wrap footer"><span>© <span id="year"></span> Veeru Varma</span><span>Full-Stack .NET Developer</span><a href="#home">Back to top ↑</a></footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear(); const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'none'; io.unobserve(e.target) } }), { threshold: .08 }); document.querySelectorAll('.project,.experience,.skill,.about-grid').forEach(e => { e.style.opacity = 0; e.style.transform = 'translateY(14px)'; e.style.transition = '.6s ease'; io.observe(e) });</script>
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#f7f7f4">
+    <title>Gallery | Veeru Varma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f7f4;
+            --ink: #111214;
+            --muted: #72736f;
+            --line: #e4e2da;
+            --yellow: #f4c400;
+            --max: 1240px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "DM Sans",sans-serif
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .wrap {
+            width: min(var(--max),calc(100% - 52px));
+            margin: auto
+        }
+
+        header {
+            height: 78px;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            background: rgba(247,247,244,.94)
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .brand {
+            font: 800 17px Manrope,sans-serif;
+            letter-spacing: -.04em
+        }
+
+            .brand span {
+                color: #b18c00
+            }
+
+        .back {
+            font-size: 13px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--ink);
+            padding: 8px 0
+        }
+
+        .hero {
+            padding: 48px 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 24px
+        }
+
+        .kicker {
+            font-size: 11px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #8b7a42;
+            font-weight: 800
+        }
+
+        h1 {
+            font: 800 clamp(40px,5.2vw,64px)/1.02 Manrope,sans-serif;
+            letter-spacing: -.065em;
+            margin: 12px 0 10px
+        }
+
+        .intro {
+            max-width: 480px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.7;
+            margin: 0
+        }
+
+        .count {
+            font: 700 13px Manrope,sans-serif;
+            white-space: nowrap;
+            color: #666
+        }
+
+        .lightbox-nav {
+            width: 42px;
+            height: 42px;
+            border: 1px solid #ffffff88;
+            background: #111c;
+            color: white;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            display: grid;
+            place-items: center
+        }
+
+        .filters {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            padding: 16px 0 26px;
+            border-top: 1px solid var(--line)
+        }
+
+        .filter {
+            border: 1px solid #d8d6ce;
+            background: transparent;
+            border-radius: 30px;
+            padding: 9px 16px;
+            font: 700 12px "DM Sans";
+            cursor: pointer
+        }
+
+            .filter.active, .filter:hover {
+                background: var(--ink);
+                border-color: var(--ink);
+                color: #fff
+            }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            align-items: start;
+            padding-bottom: 80px
+        }
+
+        .photo-card {
+            margin: 0;
+            background: white;
+            border: 1px solid var(--line);
+            padding: 7px;
+        }
+
+        .photo-open {
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: 0;
+            background: #eceae3;
+            cursor: zoom-in;
+            position: relative;
+            overflow: hidden
+        }
+
+            .photo-open img {
+                display: block;
+                width: 100%;
+                height: auto;
+                max-height: 620px;
+                object-fit: cover;
+                transition: transform .55s cubic-bezier(.2,.7,.2,1);
+            }
+
+            .photo-open:hover img {
+                transform: scale(1.035)
+            }
+
+        .photo-index {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(17,18,20,.76);
+            color: white;
+            padding: 6px 9px;
+            font-size: 10px;
+            letter-spacing: .1em
+        }
+
+        figcaption {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 7px 7px;
+            font-size: 13px;
+            font-weight: 700
+        }
+
+            figcaption small {
+                font-size: 10px;
+                text-transform: uppercase;
+                letter-spacing: .12em;
+                color: #999;
+                font-weight: 700
+            }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 22px 0 34px;
+            color: #85857f;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            gap: 14px
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(10,11,12,.94);
+            z-index: 10;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px
+        }
+
+            .lightbox.open {
+                display: flex
+            }
+
+            .lightbox img {
+                max-width: min(92vw,1200px);
+                max-height: 86vh;
+                object-fit: contain;
+                box-shadow: 0 20px 80px #0008
+            }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            width: 48px;
+            height: 48px
+        }
+
+        .lightbox-prev {
+            left: 22px
+        }
+
+        .lightbox-next {
+            right: 22px
+        }
+
+        .lightbox-meta {
+            position: absolute;
+            bottom: 18px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #ddd;
+            font-size: 12px;
+            letter-spacing: .08em
+        }
+
+        .close {
+            position: absolute;
+            right: 24px;
+            top: 20px;
+            color: #fff;
+            background: none;
+            border: 0;
+            font-size: 32px;
+            cursor: pointer
+        }
+
+        @media(max-width:700px) {
+            .wrap {
+                width: calc(100% - 32px)
+            }
+
+            .lightbox {
+                padding: 14px
+            }
+
+            .lightbox-nav {
+                width: 38px;
+                height: 38px
+            }
+
+            .lightbox-prev {
+                left: 8px
+            }
+
+            .lightbox-next {
+                right: 8px
+            }
+
+            .hero {
+                display: block;
+                padding: 34px 0 24px
+            }
+
+            h1 {
+                font-size: clamp(38px,10vw,52px)
+            }
+
+            .count {
+                display: block;
+                margin-top: 18px
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px
+            }
+
+            .photo-card {
+                padding: 5px
+            }
+
+            figcaption {
+                display: block;
+                font-size: 11px;
+                padding: 9px 4px 5px
+            }
+
+                figcaption small {
+                    display: block;
+                    margin-top: 5px
+                }
+
+            footer {
+                display: block;
+                line-height: 2
+            }
+        }
+    </style>
+</head>
+<body>
+    <header><div class="wrap nav"><a class="brand" href="index.html">Er<span style="color:#f4c400">.</span> Veeru Verma<span></span></a><a class="back" href="index.html">← Back to portfolio</a></div></header>
+    <main class="wrap">
+        <section class="hero"><div><div class="kicker">A little beyond the code</div><h1>Photo journal.</h1><p class="intro">A personal collection of workdays, familiar faces and places worth remembering — presented in a clean, easy-to-explore gallery.</p></div><div class="count">27 PHOTOGRAPHS · 2026</div></section>
+        <div class="filters" aria-label="Filter photographs">
+            <button class="filter active" data-filter="All">All photos</button><button class="filter" data-filter="Work">Work</button><button class="filter" data-filter="Travel">Travel</button><button class="filter" data-filter="Moments">Moments</button>
+        </div>
+        <section class="grid" aria-label="Photo gallery">
+
+            <figure class="photo-card" data-category="Work">
+                <button class="photo-open" type="button" aria-label="View A visit to the Paytm office">
+                    <img src="photos/veeru-27.jpg" alt="A visit to the Paytm office" loading="lazy">
+                    <span class="photo-index">01</span>
+                </button>
+                <figcaption><span>At the Paytm office</span><small>Work</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Moments">
+                <button class="photo-open" type="button" aria-label="View An outdoor moment">
+                    <img src="photos/veeru-01.jpg" alt="An outdoor moment" loading="lazy">
+                    <span class="photo-index">02</span>
+                </button>
+                <figcaption><span>An outdoor moment</span><small>Moments</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Moments">
+                <button class="photo-open" type="button" aria-label="View A casual portrait">
+                    <img src="photos/veeru-02.jpg" alt="A casual portrait" loading="lazy">
+                    <span class="photo-index">03</span>
+                </button>
+                <figcaption><span>A casual portrait</span><small>Moments</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Moments">
+                <button class="photo-open" type="button" aria-label="View A workday look">
+                    <img src="photos/veeru-03.jpg" alt="A workday look" loading="lazy">
+                    <span class="photo-index">04</span>
+                </button>
+                <figcaption><span>A workday look</span><small>Moments</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View Into the woods">
+                    <img src="photos/veeru-04.jpg" alt="Into the woods" loading="lazy">
+                    <span class="photo-index">05</span>
+                </button>
+                <figcaption><span>Into the woods</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Work">
+                <button class="photo-open" type="button" aria-label="View Office moments">
+                    <img src="photos/veeru-05.jpg" alt="Office moments" loading="lazy">
+                    <span class="photo-index">06</span>
+                </button>
+                <figcaption><span>Office moments</span><small>Work</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Work">
+                <button class="photo-open" type="button" aria-label="View Building and learning">
+                    <img src="photos/veeru-06.jpg" alt="Building and learning" loading="lazy">
+                    <span class="photo-index">07</span>
+                </button>
+                <figcaption><span>Building and learning</span><small>Work</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Work">
+                <button class="photo-open" type="button" aria-label="View A developer’s desk">
+                    <img src="photos/veeru-07.jpg" alt="A developer’s desk" loading="lazy">
+                    <span class="photo-index">08</span>
+                </button>
+                <figcaption><span>A developer’s desk</span><small>Work</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View A visit to the hills">
+                    <img src="photos/veeru-08.jpg" alt="A visit to the hills" loading="lazy">
+                    <span class="photo-index">09</span>
+                </button>
+                <figcaption><span>A visit to the hills</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Moments">
+                <button class="photo-open" type="button" aria-label="View A day to remember">
+                    <img src="photos/veeru-09.jpg" alt="A day to remember" loading="lazy">
+                    <span class="photo-index">10</span>
+                </button>
+                <figcaption><span>A day to remember</span><small>Moments</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Work">
+                <button class="photo-open" type="button" aria-label="View At the office">
+                    <img src="photos/veeru-10.jpg" alt="At the office" loading="lazy">
+                    <span class="photo-index">11</span>
+                </button>
+                <figcaption><span>At the office</span><small>Work</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View Temple town">
+                    <img src="photos/veeru-11.jpg" alt="Temple town" loading="lazy">
+                    <span class="photo-index">12</span>
+                </button>
+                <figcaption><span>Temple town</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View Forest trails">
+                    <img src="photos/veeru-12.jpg" alt="Forest trails" loading="lazy">
+                    <span class="photo-index">13</span>
+                </button>
+                <figcaption><span>Forest trails</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View Mountain air">
+                    <img src="photos/veeru-13.jpg" alt="Mountain air" loading="lazy">
+                    <span class="photo-index">14</span>
+                </button>
+                <figcaption><span>Mountain air</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Moments">
+                <button class="photo-open" type="button" aria-label="View Good company">
+                    <img src="photos/veeru-14.jpg" alt="Good company" loading="lazy">
+                    <span class="photo-index">15</span>
+                </button>
+                <figcaption><span>Good company</span><small>Moments</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Moments">
+                <button class="photo-open" type="button" aria-label="View Friends and memories">
+                    <img src="photos/veeru-15.jpg" alt="Friends and memories" loading="lazy">
+                    <span class="photo-index">16</span>
+                </button>
+                <figcaption><span>Friends and memories</span><small>Moments</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View Quiet mountain views">
+                    <img src="photos/veeru-16.jpg" alt="Quiet mountain views" loading="lazy">
+                    <span class="photo-index">17</span>
+                </button>
+                <figcaption><span>Quiet mountain views</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View On the road">
+                    <img src="photos/veeru-17.jpg" alt="On the road" loading="lazy">
+                    <span class="photo-index">18</span>
+                </button>
+                <figcaption><span>On the road</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View A little time outdoors">
+                    <img src="photos/veeru-18.jpg" alt="A little time outdoors" loading="lazy">
+                    <span class="photo-index">19</span>
+                </button>
+                <figcaption><span>A little time outdoors</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View A memorable visit">
+                    <img src="photos/veeru-19.jpg" alt="A memorable visit" loading="lazy">
+                    <span class="photo-index">20</span>
+                </button>
+                <figcaption><span>A memorable visit</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View Fresh air, fresh perspective">
+                    <img src="photos/veeru-20.jpg" alt="Fresh air, fresh perspective" loading="lazy">
+                    <span class="photo-index">21</span>
+                </button>
+                <figcaption><span>Fresh air, fresh perspective</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View A mountain escape">
+                    <img src="photos/veeru-21.jpg" alt="A mountain escape" loading="lazy">
+                    <span class="photo-index">22</span>
+                </button>
+                <figcaption><span>A mountain escape</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View A hill-side portrait">
+                    <img src="photos/veeru-22.jpg" alt="A hill-side portrait" loading="lazy">
+                    <span class="photo-index">23</span>
+                </button>
+                <figcaption><span>A quiet moment in the hills</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Travel">
+                <button class="photo-open" type="button" aria-label="View A visit to the Lotus Temple">
+                    <img src="photos/veeru-23.jpg" alt="A visit to the Lotus Temple" loading="lazy">
+                    <span class="photo-index">24</span>
+                </button>
+                <figcaption><span>A day at the Lotus Temple</span><small>Travel</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Moments">
+                <button class="photo-open" type="button" aria-label="View A mirror portrait">
+                    <img src="photos/veeru-24.jpg" alt="A mirror portrait" loading="lazy">
+                    <span class="photo-index">25</span>
+                </button>
+                <figcaption><span>A quick mirror portrait</span><small>Moments</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Moments">
+                <button class="photo-open" type="button" aria-label="View Friends and memories">
+                    <img src="photos/veeru-25.jpg" alt="Friends and memories" loading="lazy">
+                    <span class="photo-index">26</span>
+                </button>
+                <figcaption><span>Good people, good memories</span><small>Moments</small></figcaption>
+            </figure>
+
+            <figure class="photo-card" data-category="Moments">
+                <button class="photo-open" type="button" aria-label="View A photo collage of friends">
+                    <img src="photos/veeru-26.jpg" alt="A photo collage of friends" loading="lazy">
+                    <span class="photo-index">27</span>
+                </button>
+                <figcaption><span>Moments worth keeping</span><small>Moments</small></figcaption>
+            </figure>
+
+
+
+        </section>
+
+    </main>
+    <footer class="wrap"><span>VEERU VARMA · FULL-STACK .NET DEVELOPER</span><a href="index.html">Return to home ↑</a></footer>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview"><button class="close" aria-label="Close">×</button><button class="lightbox-nav lightbox-prev" aria-label="Previous photo">‹</button><img src="" alt=""><button class="lightbox-nav lightbox-next" aria-label="Next photo">›</button><div class="lightbox-meta" id="lightboxMeta"></div></div>
+    <script>
+        const filters = [...document.querySelectorAll('.filter')], cards = [...document.querySelectorAll('.photo-card')];
+        filters.forEach(btn => btn.addEventListener('click', () => { filters.forEach(x => x.classList.remove('active')); btn.classList.add('active'); cards.forEach(card => card.hidden = btn.dataset.filter !== 'All' && card.dataset.category !== btn.dataset.filter) }));
+        // Full-screen viewer with previous/next navigation
+        const box = document.getElementById('lightbox'), big = box.querySelector('img'), meta = document.getElementById('lightboxMeta'); let photoItems = [], photoIndex = 0;
+        function refreshPhotoItems() { photoItems = [...document.querySelectorAll('.photo-card')].map(card => ({ src: card.querySelector('img').getAttribute('src'), alt: card.querySelector('img').alt })); }
+        function openPhoto(src, alt) { refreshPhotoItems(); photoIndex = Math.max(0, photoItems.findIndex(x => x.src === src)); if (photoIndex < 0) photoIndex = 0; showPhoto(); box.classList.add('open'); document.body.style.overflow = 'hidden' }
+        function showPhoto() { const item = photoItems[photoIndex]; if (!item) return; big.src = item.src; big.alt = item.alt; meta.textContent = `${String(photoIndex + 1).padStart(2, '0')} / ${String(photoItems.length).padStart(2, '0')} · ${item.alt}` }
+        function movePhoto(step) { photoIndex = (photoIndex + step + photoItems.length) % photoItems.length; showPhoto() }
+        function closeBox() { box.classList.remove('open'); big.src = ''; document.body.style.overflow = '' }
+        document.querySelectorAll('.photo-open').forEach(btn => btn.addEventListener('click', () => openPhoto(btn.querySelector('img').getAttribute('src'), btn.querySelector('img').alt)));
+        box.querySelector('.close').addEventListener('click', closeBox); box.querySelector('.lightbox-prev').addEventListener('click', () => movePhoto(-1)); box.querySelector('.lightbox-next').addEventListener('click', () => movePhoto(1)); box.addEventListener('click', e => { if (e.target === box) closeBox() });
+        document.addEventListener('keydown', e => { if (!box.classList.contains('open')) return; if (e.key === 'Escape') closeBox(); if (e.key === 'ArrowLeft') movePhoto(-1); if (e.key === 'ArrowRight') movePhoto(1) });
+        let touchStart = 0; box.addEventListener('touchstart', e => touchStart = e.changedTouches[0].screenX, { passive: true }); box.addEventListener('touchend', e => { const delta = e.changedTouches[0].screenX - touchStart; if (Math.abs(delta) > 45) movePhoto(delta < 0 ? 1 : -1) }, { passive: true });
+
+
+        // Keep serial numbers in the same left-to-right order as the CSS Grid.
+        cards.forEach((card, index) => {
+            const number = card.querySelector(".photo-index");
+            if (number) number.textContent = String(index + 1).padStart(2, "0");
+        });
+    </script>
+</body>
+</html>
