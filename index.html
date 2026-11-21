@@ -449,6 +449,67 @@
             margin: 9px 0 0
         }
 
+        .achievement-card {
+            display: grid;
+            grid-template-columns: minmax(260px, .9fr) 1.1fr;
+            gap: 30px;
+            align-items: center;
+            padding: 22px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+        }
+
+        .achievement-image {
+            min-width: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f4f2ed;
+        }
+
+            .achievement-image img {
+                display: block;
+                width: 100%;
+                height: auto;
+                max-height: 520px;
+                object-fit: contain;
+            }
+
+        .achievement-copy .achievement-label {
+            display: inline-block;
+            margin-bottom: 14px;
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: #fbf4d9;
+            color: #806300;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .achievement-copy h3 {
+            margin: 0 0 12px;
+            font: 800 clamp(23px, 3vw, 34px)/1.12 Manrope;
+            letter-spacing: -.045em;
+        }
+
+        .achievement-copy p {
+            margin: 0;
+            color: #62666c;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .achievement-meta {
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px solid var(--line);
+            color: #777;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
         .contact {
             background: #111;
             color: white;
@@ -612,6 +673,16 @@
                 gap: 9px
             }
 
+            .achievement-card {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 14px;
+            }
+
+            .achievement-image img {
+                max-height: 460px;
+            }
+
             .contact {
                 padding: 26px;
                 display: block
@@ -634,7 +705,7 @@
         <div class="wrap nav">
             <a class="logo" href="#">Er<span style="color:#f4c400">.</span> Veeru Varma</a><nav class="links">
                 <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
-                <a href="gallery.html">Gallery</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+                <a href="gallery.html">Gallery</a><a href="#experience">Experience</a><a href="#achievement">Achievement</a><a href="#contact">Contact</a>
             </nav><a class="resume" href="Veeru_Varma_Resume.pdf" download>Download Resume ↓</a>
         </div>
     </header>
@@ -647,6 +718,23 @@
         <section id="skills"><div class="wrap"><div class="section-head"><div><div class="eyebrow">02 / Technical skills</div><h2>My technology stack.</h2></div></div><div class="skills"><div class="skill">C#</div><div class="skill">ASP.NET MVC</div><div class="skill">.NET Core Web API</div><div class="skill">Angular</div><div class="skill">AngularJS</div><div class="skill">SQL Server</div><div class="skill">MySQL</div><div class="skill">Oracle RDBMS</div><div class="skill">Entity Framework</div><div class="skill">ADO.NET</div><div class="skill">LINQ</div><div class="skill">JWT / RBAC</div><div class="skill">AES / TLS</div><div class="skill">xUnit</div><div class="skill">YOLOv8 / OpenCV</div><div class="skill">Tesseract OCR</div><div class="skill">Git / Jira</div></div></div></section>
         <section id="projects"><div class="wrap"><div class="section-head"><div><div class="eyebrow">03 / Featured work</div><h2>Selected projects.</h2></div><span style="font-size:12px;color:#777">8 projects</span></div><div class="projects"><article class="project"><div class="p-top"><span>01 / PAYTM</span><span>PROJECT</span></div><div class="p-mark">01</div><h3>Nayara Energy — Vehicle Management &amp; User Management</h3><p>Combined vehicle and user management work for Nayara Energy’s fuel outlet network.</p><div class="tags"><span>ASP.NET Core Web API</span><span>ASP.NET MVC</span><span>SQL Server</span><span>JWT / RBAC</span></div></article><article class="project"><div class="p-top"><span>02 / BLACKBULL</span><span>PROJECT</span></div><div class="p-mark">02</div><h3>IXXALL — HRMS</h3><p>HRMS covering employee records, attendance, leave, payroll and user management, with background file monitoring and automated notifications.</p><div class="tags"><span>.NET 8 Web API</span><span>xUnit</span></div></article><article class="project"><div class="p-top"><span>03 / BLACKBULL</span><span>PROJECT</span></div><div class="p-mark">03</div><h3>DocDaddy — Legal Services Platform</h3><p>Lawyer discovery and category-wise search, appointment booking, digital e-sign workflows and payment gateway integration.</p><div class="tags"><span>.NET Web API 4.5</span><span>AngularJS</span><span>Payments</span></div></article><article class="project"><div class="p-top"><span>04 / BLACKBULL</span><span>PROJECT</span></div><div class="p-mark">04</div><h3>IFS — Integrated Finance System</h3><p>Payroll engine plus Business, Home and Gold loan modules, document upload and multi-stage approval workflows.</p><div class="tags"><span>.NET</span><span>SQL Server</span><span>Workflows</span></div></article><article class="project"><div class="p-top"><span>05 / NEPTUNE</span><span>PROJECT</span></div><div class="p-mark">05</div><h3>Access Management System — PWA</h3><p>Progressive Web App for managing access permissions, users and entry operations through a responsive interface.</p><div class="tags"><span>PWA</span><span>.NET Core Web API</span><span>Access Control</span></div></article><article class="project"><div class="p-top"><span>06 / NEPTUNE</span><span>PROJECT</span></div><div class="p-mark">06</div><h3>ANPR Parking System — Vehicle Detection &amp; Number Plate Recognition</h3><p>Real-time vehicle detection using YOLOv8 and OpenCV, with number-plate extraction using Tesseract OCR and .NET API integration.</p><div class="tags"><span>Python</span><span>YOLOv8</span><span>OpenCV</span><span>Tesseract OCR</span></div></article><article class="project"><div class="p-top"><span>07 / NEPTUNE</span><span>PROJECT</span></div><div class="p-mark">07</div><h3>FASTag Parking System — Contactless Payment Integration</h3><p>Contactless FASTag payment API integration with an Angular operator interface.</p><div class="tags"><span>FASTag API</span><span>Angular</span><span>Payment Integration</span></div></article><article class="project"><div class="p-top"><span>08 / NEPTUNE</span><span>PROJECT</span></div><div class="p-mark">08</div><h3>EMS — Electronic Management System</h3><p>Electronic Management System with document upload, workflow automation and third-party e-signature integration.</p><div class="tags"><span>Document Workflow</span><span>Automation</span><span>E-signature</span></div></article></div></div></section>
         <section id="experience"><div class="wrap"><div class="section-head"><div><div class="eyebrow">04 / Career</div><h2>Work experience.</h2></div></div><article class="experience"><div class="date">FEB 2026 — SEP 2026</div><div><h3>Full-Stack .NET Developer</h3><b>Paytm · Nayara Energy Project</b><small>Contract role; payroll administered by SingleFocus Service LLP</small><p>Vehicle management, user management, secure APIs and SQL Server performance for transactional workloads.</p></div></article><article class="experience"><div class="date">FEB 2025 — DEC 2025</div><div><h3>Full-Stack .NET Developer</h3><b>Blackbull Technosoft Pvt. Ltd.</b><p>IXXALL HRMS, DocDaddy legal services platform and IFS Integrated Finance System.</p></div></article><article class="experience"><div class="date">MAR 2022 — JAN 2025</div><div><h3>Full-Stack .NET Developer</h3><b>Neptune India Limited</b><p>Access management PWA, ANPR parking and FASTag parking + EMS.</p></div></article></div></section>
+        <section id="achievement">
+            <div class="wrap">
+                <div class="section-head"><div><div class="eyebrow">05 / Recognition</div><h2>Achievement.</h2></div></div>
+                <article class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="paytm-achievement.png" alt="Paytm appreciation award presented to Veeru Verma for his contribution to the successful launch of the Nayara Fleet Plus Loyalty Program" loading="lazy">
+                    </div>
+                    <div class="achievement-copy">
+                        <span class="achievement-label">Recognition · Paytm</span>
+                        <h3>A proud milestone in my journey.</h3>
+                        <p>I’m truly grateful to have been recognized by Paytm for my contribution to the successful launch of the <strong>Nayara Fleet Plus Loyalty Program</strong>. This appreciation means a lot to me and reminds me that dedication, teamwork, and consistent effort make a real difference. I’m thankful to my teammates, colleagues, and leadership for their trust, support, and collaboration. This recognition motivates me to keep learning, growing, and creating meaningful impact.</p>
+                        <div class="achievement-meta">Awarded to <strong>Veeru Verma</strong><br>Paytm · Nayara Energy Project</div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <section id="contact"><div class="wrap"><div class="contact"><div><div class="eyebrow">Have an opportunity?</div><h2>Let’s build something great.</h2><div style="color:#d3d3d3;font-size:14px">veerutasu89@gmail.com · +91 93155 70548 · Noida, India</div></div><a href="mailto:veerutasu89@gmail.com">Get in touch →</a></div></div></section>
     </main><footer class="wrap footer"><span>© <span id="year"></span> Veeru Varma</span><span>Full-Stack .NET Developer</span><a href="#home">Back to top ↑</a></footer>
     <script>document.getElementById('year').textContent = new Date().getFullYear(); const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'none'; io.unobserve(e.target) } }), { threshold: .08 }); document.querySelectorAll('.project,.experience,.skill,.about-grid').forEach(e => { e.style.opacity = 0; e.style.transform = 'translateY(14px)'; e.style.transition = '.6s ease'; io.observe(e) });</script>
