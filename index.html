@@ -193,7 +193,7 @@
         }
 
         .hero-art img {
-            margin-left: 25px;
+            margin-left: 0;
             position: relative;
             z-index: 1;
             width: min(420px,100%);
@@ -300,11 +300,11 @@
 
         .about-image {
             height: 360px;
-            width: 360px;
+            width: min(360px, 100%);
             border-radius: 18px;
             overflow: hidden;
             background: #ffffff;
-            margin-left: 80px
+            margin: 0 auto
         }
 
             .about-image img {
@@ -630,8 +630,14 @@
     </style>
 </head>
 <body>
-    <header><div class="wrap nav"><a class="logo" href="#">Er<span style="color:#f4c400">.</span> Veeru Varma</a><nav class="links"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
-            <a href="gallery.html">Gallery</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav><a class="resume" href="Veeru_Varma_Resume.pdf" download>Download Resume ↓</a></div></header>
+    <header>
+        <div class="wrap nav">
+            <a class="logo" href="#">Er<span style="color:#f4c400">.</span> Veeru Varma</a><nav class="links">
+                <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+                <a href="gallery.html">Gallery</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+            </nav><a class="resume" href="Veeru_Varma_Resume.pdf" download>Download Resume ↓</a>
+        </div>
+    </header>
     <main id="home">
         <div class="wrap">
             <section class="hero"><div class="hero-copy"><div class="kicker">Hello, I’m</div><h1>Veeru <span>Varma</span></h1><p class="role">Full Stack .NET Developer</p><p class="lead">I build scalable, secure and high-performance web applications using .NET Core, Web API, SQL Server and Angular.</p><div class="actions"><a class="btn dark" href="#projects">View Projects →</a><a class="btn light" href="#contact">Contact Me ↗</a></div><div class="social"><a href="https://www.linkedin.com/in/veeru-varma/" target="_blank">in</a><a href="mailto:veerutasu89@gmail.com">@</a><a href="tel:+919315570548">☎</a><a href="https://www.instagram.com/the_veeru_verma/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a></div></div><div class="hero-art"><div class="sun"></div><div class="float-skills"><span>.NET Core / .NET 8</span><span>Angular</span><span>SQL Server</span><span>C#</span></div><img src="veeru-profile-edited.jpg" alt="Veeru Varma portrait"><div class="exp-badge"><strong>4.5+</strong>Years of Experience</div></div></section>
